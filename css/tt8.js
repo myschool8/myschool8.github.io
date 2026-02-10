@@ -25,7 +25,8 @@ const lessonsTime = [588, 643, 708, 773, 833, 888, 1500];   ////////////////////
 const shift = 1;   // зсув розкладу = 1 - нульового уроку, 0 - для першого   /////////////////
 
 const sLink = 'tt-link';   // стиль посилань для SPAN
-const sChZn = 'tt-ch-zn';   // стиль посилань для SPAN
+const sCh = 'tt-ch';   // стиль посилань для SPAN
+const sZn = 'tt-zn';   // стиль посилань для SPAN
 
 const sColor1 = 'tt--color-1';   // стиль непарного рядка для TD
 const sColor2 = 'tt--color-2';   // стиль парного рядка для TD
@@ -39,7 +40,7 @@ var currTime = shift;
 function GetCurrentTime() {
   let d = new Date();
   let day = d.getUTCDay() - 1;
-  if (day > 4 || day < 0) return 0;
+  if (day > 4 || day < 0) return shift;
   
   let m = new Date();
   let g = new Date();
@@ -193,7 +194,7 @@ function SaveSub(s, x, color) {
   if (x !== 0) {   // для чисельників і знаменників
     const spanAdd = document.createElement('span');
     spanAdd.innerHTML = (x < 0) ? '1&nbsp;' : '2&nbsp;';
-    spanAdd.className = sChZn;
+    spanAdd.className = (x < 0) ? sCh : sZn;
     td.appendChild(spanAdd);
   }  
 
